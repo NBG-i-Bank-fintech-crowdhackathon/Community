@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{5CB0B417-275B-4271-88A5-55D861E252C8}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrowdHacakthon</RootNamespace>
+    <AssemblyName>CrowdHacakthon</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>CrowdHacakthon_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\DateTimeToLocalDateTime.cs" />
+    <Compile Include="Converters\TypeToColorConverter.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainUserPage.xaml.cs">
+      <DependentUpon>MainUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Business.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\Request.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\NotificationViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="CrowdHacakthon_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\Bank Euro-96.png" />
+    <Content Include="Icons\Bread-96.png" />
+    <Content Include="Icons\Card in Use-96.png" />
+    <Content Include="Icons\Coins 2-96.png" />
+    <Content Include="Icons\Coins-96.png" />
+    <Content Include="Icons\Exit-96.png" />
+    <Content Include="Icons\Expand Arrow-96.png" />
+    <Content Include="Icons\Facebook Messenger Filled-100.png" />
+    <Content Include="Icons\Facebook-96.png" />
+    <Content Include="Icons\Fonts.txt" />
+    <Content Include="Icons\Google Plus-96.png" />
+    <Content Include="Icons\Happy-96.png" />
+    <Content Include="Icons\Home-96.png" />
+    <Content Include="Icons\icon-ios7-bell-128.png" />
+    <Content Include="Icons\Info-96.png" />
+    <Content Include="Icons\LinkedIn-96.png" />
+    <Content Include="Icons\Logo mini-04.png" />
+    <Content Include="Icons\Logo-01.png" />
+    <Content Include="Icons\Long Arrow Right-96.png" />
+    <Content Include="Icons\Map Marker 2-96.png" />
+    <Content Include="Icons\Map Marker-96.png" />
+    <Content Include="Icons\Marker Filled-100.png" />
+    <Content Include="Icons\Mastercard-96.png" />
+    <Content Include="Icons\Menu-96.png" />
+    <Content Include="Icons\Message Filled-100.png" />
+    <Content Include="Icons\Message Filled-50.png" />
+    <Content Include="Icons\Mind Map-96.png" />
+    <Content Include="Icons\Normal Distribution Histogram-96.png" />
+    <Content Include="Icons\Rock Music-104.png" />
+    <Content Include="Icons\Search 2-96.png" />
+    <Content Include="Icons\Search-96.png" />
+    <Content Include="Icons\Settings-96.png" />
+    <Content Include="Icons\Shop - Screen 1.png" />
+    <Content Include="Icons\Shop - Screen 2.png" />
+    <Content Include="Icons\Shop - Screen 3.png" />
+    <Content Include="Icons\Shop - Screen 4.png" />
+    <Content Include="Icons\Shop - Screen 5.png" />
+    <Content Include="Icons\Stack of Photos-96.png" />
+    <Content Include="Icons\Star Filled-100.png" />
+    <Content Include="Icons\Star Half Empty-96.png" />
+    <Content Include="Icons\Star-96.png" />
+    <Content Include="Icons\Theatre Mask-104 %281%29.png" />
+    <Content Include="Icons\Theatre Mask-104.png" />
+    <Content Include="Icons\Twitter Filled-100.png" />
+    <Content Include="Icons\Twitter-96.png" />
+    <Content Include="Icons\User-03.png" />
+    <Content Include="Icons\Users-01.png" />
+    <Content Include="Icons\Users-02.png" />
+    <Content Include="Icons\Users-03.png" />
+    <Content Include="Icons\Users-04.png" />
+    <Content Include="Icons\Users-05.png" />
+    <Content Include="Icons\Users-06.png" />
+    <Content Include="Icons\Users-07.png" />
+    <Content Include="Icons\Users-08.png" />
+    <Content Include="Icons\Users-09.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Screens\Screens-06.png" />
+    <Content Include="Screens\Screens-07.png" />
+    <Content Include="Screens\Screens-08.png" />
+    <Content Include="Screens\Screens-09.png" />
+    <Content Include="Screens\Screens-10.png" />
+    <Content Include="Screens\Screens-11.png" />
+    <Content Include="Screens\Screens-12.png" />
+    <Content Include="Screens\Screens-13.png" />
+    <Content Include="Screens\Screens-14.png" />
+    <Content Include="Screens\Screens-15.png" />
+    <Content Include="Screens\Screens-16.png" />
+    <Content Include="Screens\Screens-17.png" />
+    <Content Include="Screens\Screens-18.png" />
+    <Content Include="Screens\Screens-19.png" />
+    <Content Include="Screens\Screens-20.png" />
+    <Content Include="Screens\Screens-21.png" />
+    <Content Include="Screens\Screens-22.png" />
+    <Content Include="Screens\Screens-23.png" />
+    <Content Include="Screens\Screens-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Syncfusion Controls for UWP XAML, Version=14.1.0.41">
+      <Name>Syncfusion Controls for UWP XAML</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,437 @@
+﻿<Page
+    x:Class="CrowdHacakthon.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CrowdHacakthon"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:charts="using:Syncfusion.UI.Xaml.Charts"
+
+    xmlns:converters="using:CrowdHacakthon.Converters"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:TypeToColorConverter x:Key="ToColorConverter"></converters:TypeToColorConverter>
+    </Page.Resources>
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <RelativePanel x:Name="topbar" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Padding="0" Height="40" Background="#FFFBB03B">
+            <TextBlock RelativePanel.AlignBottomWithPanel="True" Margin="120,0,0,4" Name="username" Text="Ο Φούρνος του Δημήτρη" Foreground="White"/>
+            <Button Name="hambg" Width="40" Height="40" Background="#FF333333" Click="Button_Click">
+                <Button.Content>
+                    <FontIcon FontFamily="{ThemeResource ContentControlThemeFontFamily}" Margin="0,0,0,5" Foreground="White" Glyph="&#x2261;" FontSize="30"/>
+                </Button.Content>
+            </Button>
+            <Image x:Name="logo" RelativePanel.RightOf="hambg" HorizontalAlignment="Center" RelativePanel.AlignVerticalCenterWithPanel="True" MaxWidth="200" RelativePanel.AlignRightWithPanel="True" Source="Icons/Logo-01.png"></Image>
+            <RelativePanel x:Name="topactions" RelativePanel.AlignRightWithPanel="True">
+                <Button RelativePanel.LeftOf="msges" Width="50" Height="40" Background="{x:Null}">
+
+                    <Button.Content>
+                        <RelativePanel Width="25" Height="25" Padding="0" Margin="0,-6">
+
+                            <SymbolIcon Margin="0,0,0,0" Tapped="UIElement_OnTappeds" Foreground="White" RelativePanel.AlignBottomWithPanel="True" Width="20" Height="20" Symbol="Find"/>
+
+                        </RelativePanel>
+                    </Button.Content>
+                </Button>
+
+                <Button x:Name="msges" RelativePanel.LeftOf="notif" Width="50" Height="40" Background="{x:Null}">
+
+                    <Button.Content>
+                        <RelativePanel Width="25" Height="25" Padding="0" Margin="0,-6">
+
+                            <BitmapIcon Margin="0,0,0,0" Foreground="White" RelativePanel.AlignBottomWithPanel="True" Width="20" Height="20" UriSource="Icons/Message Filled-100.png"/>
+                            <Border BorderThickness="1" Width="15" Height="15" CornerRadius="10,10,10,10" BorderBrush="#FF0787EC" Background="#FF0078D7" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
+                                <TextBlock HorizontalAlignment="Center"  Foreground="White" Style="{StaticResource CaptionTextBlockStyle}" FontSize="8" Text="1"></TextBlock>
+                            </Border>
+                        </RelativePanel>
+                    </Button.Content>
+                </Button>
+
+                <Button Name="notif" RelativePanel.AlignRightWithPanel="True" Width="50" Height="40" Background="{x:Null}">
+
+                    <Button.Content>
+                        <RelativePanel Padding="0" Margin="0,-6" >
+
+                            <BitmapIcon Margin="0,0,0,0" Foreground="White" Width="25" Height="25" UriSource="Icons/icon-ios7-bell-128.png"/>
+                            <Border BorderThickness="1" Width="15" Height="15" CornerRadius="10,10,10,10" BorderBrush="#FF0787EC" Background="#FF0078D7" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
+                                <TextBlock HorizontalAlignment="Center"  Foreground="White" Style="{StaticResource CaptionTextBlockStyle}" FontSize="8" Text="{Binding Notifications}"></TextBlock>
+                            </Border>
+                        </RelativePanel>
+                    </Button.Content>
+                    <Button.Flyout>
+                        <Flyout>
+
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+
+            </RelativePanel>
+
+        </RelativePanel>
+
+        <SplitView Name="Pane" RelativePanel.Below="topbar" PaneBackground="#FF333333" OpenPaneLength="200" CompactPaneLength="40" DisplayMode="CompactOverlay" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+
+            <SplitView.Pane>
+                <RelativePanel>
+                    <Ellipse Tapped="Userimage2_OnTapped" RelativePanel.AlignHorizontalCenterWithPanel="True" Stroke="White" StrokeThickness="2" x:Name="userimage2" MaxHeight="60" MaxWidth="60" MinWidth="60" MinHeight="60" Margin="0,-30,30,0">
+                        <Ellipse.Fill>
+                            <ImageBrush AlignmentX="Center" AlignmentY="Center" ImageSource="{Binding ElementName=imbrush,Path=ImageSource}" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock x:Name="username2" Margin="0,10,0,0" RelativePanel.Below="userimage2" Foreground="White" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding ElementName=username,Path=Text}"></TextBlock>
+                    <StackPanel x:Name="primarysp" Margin="0,80,0,0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                        <ToggleButton Tapped="UIElement_OnTapped3" IsChecked="True" Width="200" Height="40" Margin="0,0,0,0"  Background="#FF333333">
+                            <ToggleButton.Content>
+                                <RelativePanel Margin="-88,0,0,0" >
+                                    <TextBlock  RelativePanel.RightOf="aicon" Margin="25,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="16" Foreground="White">Αρχική</TextBlock>
+
+                                    <BitmapIcon Name="aicon" RelativePanel.AlignLeftWithPanel="True" UriSource="Icons/Home-96.png" Width="20" Foreground="White"></BitmapIcon>
+                                </RelativePanel>
+
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton Tapped="UIElement_OnTapped4" Width="200" Height="40" Margin="0,0,0,0" Background="#FF333333">
+                            <ToggleButton.Content>
+                                <RelativePanel Margin="-73,0,0,0" >
+                                    <TextBlock  RelativePanel.RightOf="iicon" Margin="25,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="16" Foreground="White">Ιστορικό</TextBlock>
+
+                                    <BitmapIcon Name="iicon" RelativePanel.AlignLeftWithPanel="True" UriSource="Icons/Normal Distribution Histogram-96.png" Width="20" Foreground="White"></BitmapIcon>
+                                </RelativePanel>
+
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton  Tapped="UIElement_OnTapped2" Width="200" Height="40" Margin="0,0,0,0" Background="#FF333333">
+                            <ToggleButton.Content>
+                                <RelativePanel Margin="-54,0,0,0" >
+                                    <TextBlock  RelativePanel.RightOf="sicon" Margin="25,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="16" Foreground="White">Συναλλαγές</TextBlock>
+
+                                    <BitmapIcon Name="sicon" RelativePanel.AlignLeftWithPanel="True" UriSource="Icons/Coins-96.png" Width="20" Foreground="White"></BitmapIcon>
+                                </RelativePanel>
+
+                            </ToggleButton.Content>
+                        </ToggleButton>
+
+                        <ToggleButton Tapped="UIElement_OnTapped" Width="200" Height="40" Margin="0,0,0,0" Background="#FF333333">
+                            <ToggleButton.Content>
+                                <RelativePanel Margin="-50,0,0,0" >
+                                    <TextBlock  RelativePanel.RightOf="eicon" Margin="25,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="16" Foreground="White">Επιχειρήσεις</TextBlock>
+
+                                    <BitmapIcon Name="eicon" RelativePanel.AlignLeftWithPanel="True" UriSource="Icons/Mind Map-96.png" Width="20" Foreground="White"></BitmapIcon>
+                                </RelativePanel>
+
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton  Tapped="UIElement_OnTapped1" Width="200" Height="40" Margin="0,0,0,0" Background="#FF333333">
+                            <ToggleButton.Content>
+                                <RelativePanel Margin="-85,0,0,0" >
+                                    <TextBlock  RelativePanel.RightOf="xicon" Margin="25,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="16" Foreground="White">Χάρτης</TextBlock>
+
+                                    <BitmapIcon Name="xicon" RelativePanel.AlignLeftWithPanel="True" UriSource="Icons/Map Marker-96.png" Width="20" Foreground="White"></BitmapIcon>
+                                </RelativePanel>
+
+                            </ToggleButton.Content>
+                        </ToggleButton>
+
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" RelativePanel.Below="primarysp" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+
+                        <Rectangle Height="0.5" Stroke="White"></Rectangle>
+                        <ToggleButton Width="200" Height="40" Margin="0,0,0,0"  Background="#FF333333">
+                            <ToggleButton.Content>
+                                <RelativePanel Margin="-75,0,0,0" >
+                                    <TextBlock  RelativePanel.RightOf="ixicon" Margin="25,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="16" Foreground="White">Feedback</TextBlock>
+
+                                    <BitmapIcon Name="ixicon" RelativePanel.AlignLeftWithPanel="True" UriSource="Icons/Happy-96.png" Width="20" Foreground="White"></BitmapIcon>
+                                </RelativePanel>
+
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton Width="200" Height="40" Margin="0,0,0,0"  Background="#FF333333">
+                            <ToggleButton.Content>
+                                <RelativePanel Margin="-72,0,0,0" >
+                                    <TextBlock  RelativePanel.RightOf="exicon" Margin="25,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="16" Foreground="White">Ρυθμίσεις</TextBlock>
+
+                                    <BitmapIcon Name="exicon" RelativePanel.AlignLeftWithPanel="True" UriSource="Icons/Settings-96.png" Width="20" Foreground="White"></BitmapIcon>
+                                </RelativePanel>
+
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton Width="200" Height="40" Margin="0,0,0,20"  Background="#FF333333">
+                            <ToggleButton.Content>
+                                <RelativePanel Margin="-88,0,0,0" >
+                                    <TextBlock  RelativePanel.RightOf="xaicon" Margin="25,0,0,0" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="16" Foreground="White">Έξοδος</TextBlock>
+
+                                    <SymbolIcon x:Name="xaicon" RelativePanel.AlignLeftWithPanel="True" Symbol="Import" Width="20" Foreground="White"/>
+                                </RelativePanel>
+
+                            </ToggleButton.Content>
+                        </ToggleButton>
+
+                    </StackPanel>
+
+                </RelativePanel>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <RelativePanel>
+                <ScrollViewer RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+                <RelativePanel>
+
+                    <TextBlock Margin="50,45"  Text="Οικονομική Πρόοδος" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                            <Border BorderBrush="Black" BorderThickness="0" CornerRadius="10,10,10,10" Margin="30,80" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="oikpro">
+                                <RelativePanel MinWidth="768">
+                                    <Ellipse RelativePanel.AlignHorizontalCenterWith="Chart" RelativePanel.AlignVerticalCenterWith="Chart" Height="76" Width="76" Stroke="Black" StrokeThickness="1"></Ellipse>
+                                    <Ellipse RelativePanel.AlignHorizontalCenterWith="Chart" RelativePanel.AlignVerticalCenterWith="Chart" Height="186" Width="186" Stroke="Black" StrokeThickness="1"></Ellipse>
+                                    <Ellipse RelativePanel.AlignHorizontalCenterWith="Chart" RelativePanel.AlignVerticalCenterWith="Chart" Height="136" Width="136" Stroke="Black" StrokeThickness="1"></Ellipse>
+                                    <TextBlock RelativePanel.AlignHorizontalCenterWith="Chart" FontWeight="SemiBold" RelativePanel.AlignVerticalCenterWith="Chart" Style="{StaticResource SubtitleTextBlockStyle}">
+                                        <Run Text="{Binding OverallPercent}"></Run>
+                                        <Run Text="%"></Run>
+                                    </TextBlock>
+                                    <charts:SfChart x:Name="Chart" BorderThickness="0" AreaBorderThickness="0" Width="200">
+
+                                        <charts:DoughnutSeries DoughnutCoefficient="1.2" DoughnutSize="1.20" ItemsSource="{Binding MainData}" Name="DoughnutSeries" XBindingPath="Value" YBindingPath="Value" Palette="Custom">
+                                        </charts:DoughnutSeries>
+                                        <charts:DoughnutSeries DoughnutCoefficient="0.45" DoughnutSize="0.97" ItemsSource="{Binding OverallData}" Name="DoughnutSeries2" XBindingPath="Value" YBindingPath="Value" Palette="Custom">
+                                        </charts:DoughnutSeries>
+                                    </charts:SfChart >
+
+                                    <StackPanel VerticalAlignment="Center" x:Name="legend"  >
+                                        <StackPanel>
+                                            <Rectangle Width="50" Height="2" HorizontalAlignment="Left" Margin="7" StrokeThickness="3" Stroke="DarkSlateBlue"></Rectangle>
+                                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" FontWeight="Light" Text="Συνολική οφειλή"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <Rectangle Width="50" Height="2" HorizontalAlignment="Left" Margin="7" StrokeThickness="3" Stroke="BlueViolet"></Rectangle>
+                                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" FontWeight="Light" Text="Μηνιαία πληρωμή"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <Rectangle Width="50" Height="2" HorizontalAlignment="Left" Margin="7" StrokeThickness="3" Stroke="Coral"></Rectangle>
+                                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" FontWeight="Light" Text="Στήριξη από Round Ups"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <Rectangle Width="50" Height="2" HorizontalAlignment="Left" Margin="7" StrokeThickness="3" Stroke="MediumTurquoise"></Rectangle>
+                                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" FontWeight="Light" Text="Στήριξη από δωρεές"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <RelativePanel x:Name="middlech" VerticalAlignment="Stretch" >
+                                        <TextBlock RelativePanel.AlignHorizontalCenterWith="Chart1" RelativePanel.AlignVerticalCenterWith="Chart1">
+                                            <Run Text="{Binding PayPercent}"></Run>
+                                            <Run>%</Run>
+                                        </TextBlock>
+                                        <TextBlock RelativePanel.AlignHorizontalCenterWith="Chart2" RelativePanel.AlignVerticalCenterWith="Chart2">
+                                            <Run Text="{Binding RoundUpsPercent}"></Run>
+                                            <Run>%</Run>
+                                        </TextBlock>
+                                        <TextBlock RelativePanel.AlignHorizontalCenterWith="Chart3" RelativePanel.AlignVerticalCenterWith="Chart3">
+                                            <Run Text="{Binding DonationPercent}"></Run>
+                                            <Run>%</Run>
+                                        </TextBlock>
+                                        <Ellipse RelativePanel.AlignHorizontalCenterWith="Chart1" RelativePanel.AlignVerticalCenterWith="Chart1" Height="55" Width="55" Stroke="Black" StrokeThickness="1"></Ellipse>
+                                        <Ellipse RelativePanel.AlignHorizontalCenterWith="Chart2" RelativePanel.AlignVerticalCenterWith="Chart2" Height="55" Width="55" Stroke="Black" StrokeThickness="1"></Ellipse>
+                                        <Ellipse RelativePanel.AlignHorizontalCenterWith="Chart3" RelativePanel.AlignVerticalCenterWith="Chart3" Height="55" Width="55" Stroke="Black" StrokeThickness="1"></Ellipse>
+                                        <StackPanel x:Name="stdet1" RelativePanel.RightOf="Chart1" RelativePanel.AlignVerticalCenterWith="Chart1">
+                                            <TextBlock TextAlignment="Center" FontSize="22" >
+                                            <Run Text="{Binding CurrentBusiness.Paid}"></Run>
+                                            <Run Text="&#x20ac;"></Run>
+                                            </TextBlock>
+                                            <TextBlock FontWeight="Light" TextAlignment="Center" Foreground="#FF6C6A6A" Text="MONTHLY PAYMENTS"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel RelativePanel.AlignHorizontalCenterWith="stdet1" RelativePanel.RightOf="Chart2" RelativePanel.AlignVerticalCenterWith="Chart2">
+                                            <TextBlock TextAlignment="Center" FontSize="22" >
+                                            <Run Text="{Binding CurrentBusiness.RoundUp}"></Run>
+                                            <Run Text="&#x20ac;"></Run>
+
+                                            </TextBlock>
+                                            <TextBlock FontWeight="Light" TextAlignment="Center" Foreground="#FF6C6A6A" Text="ROUND UPS"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel  RelativePanel.AlignHorizontalCenterWith="stdet1"  RelativePanel.RightOf="Chart3" RelativePanel.AlignVerticalCenterWith="Chart3">
+                                            <TextBlock TextAlignment="Center" FontSize="22" >
+                                            <Run Text="{Binding CurrentBusiness.Donation}"></Run>
+                                            <Run Text="&#x20ac;"></Run>
+
+                                            </TextBlock>
+                                            <TextBlock FontWeight="Light" TextAlignment="Center" Foreground="#FF6C6A6A" Text="DONATIONS"></TextBlock>
+                                        </StackPanel>
+
+
+                                        <charts:SfChart x:Name="Chart1" RelativePanel.AlignTopWithPanel="True" BorderThickness="0" AreaBorderThickness="0" Height="66" Width="80">
+
+                                            <charts:DoughnutSeries ItemsSource="{Binding PayData}" DoughnutCoefficient="1.2" DoughnutSize="0.75" Name="RoundSeries" XBindingPath="Value" YBindingPath="Value" Palette="Custom">
+                                            </charts:DoughnutSeries>
+                                        </charts:SfChart >
+                                        <charts:SfChart x:Name="Chart2" RelativePanel.AlignVerticalCenterWithPanel="True" BorderThickness="0" AreaBorderThickness="0" Height="66" Width="80">
+
+                                            <charts:DoughnutSeries ItemsSource="{Binding RoundUpData}" DoughnutCoefficient="1.2" DoughnutSize="0.75" Name="PaymentSeries" XBindingPath="Value" YBindingPath="Value" Palette="Custom">
+                                            </charts:DoughnutSeries>
+                                        </charts:SfChart >
+                                        <charts:SfChart x:Name="Chart3" RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="Chart2"  BorderThickness="0" AreaBorderThickness="0" Height="66" Width="80">
+
+                                            <charts:DoughnutSeries ItemsSource="{Binding DonationData}" DoughnutCoefficient="1.2" DoughnutSize="0.75" Name="DonationSeries" XBindingPath="Value" YBindingPath="Value" Palette="Custom">
+                                            </charts:DoughnutSeries>
+                                        </charts:SfChart >
+                                    </RelativePanel>
+                                    <Rectangle Name="sep" Margin="30,0" Height="230" Width="0.5" Stroke="DimGray" ></Rectangle>
+                                    <StackPanel x:Name="info" >
+                                        <BitmapIcon UriSource="Icons/Info-96.png" Width="30"></BitmapIcon>
+
+                                        <FlipView x:Name="flipview" Width="400" Height="150" Background="{x:Null}">
+                                            <FlipView.Items>
+                                                <FlipViewItem>
+                                                    <TextBlock VerticalAlignment="Center" Width="300" Text="Round Ups είναι τα χρήματα που σας αναλογούν από το σύνολο των αγορών των μεών του δικτύου Community με την κάρτα Community Mastercard." TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource FlyoutPickerTitleTextBlockStyle}"></TextBlock>
+                                                </FlipViewItem>
+                                                <FlipViewItem>
+                                                    <TextBlock VerticalAlignment="Center" Width="300" Text="Το «συνολικό» είναι η άθροιση των ποσών που συλλέγετε από όλες της κατηγορείς με σκοπό την πληρωμή της επιχειρησιακής οφειλής." TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource FlyoutPickerTitleTextBlockStyle}"></TextBlock>
+                                                </FlipViewItem>
+                                                <FlipViewItem>
+                                                    <TextBlock VerticalAlignment="Center" Width="300" Text="Μέσο της επιλογής «Donate» ο καθένας μπορεί να δωρίσει οποιοδήποτε ποσό στο για την ελάφρυνση της οφείλεις μιας συγκεκριμένης επιχρίσεις." TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource FlyoutPickerTitleTextBlockStyle}"></TextBlock>
+                                                </FlipViewItem>
+                                                <FlipViewItem>
+                                                    <TextBlock VerticalAlignment="Center" Width="300" Text="Το «μηνιαίο» είναι το ποσό οπού η επίχριση μηνιαίος ξεχρεώνει αυτόνομα την οφειλή της." TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource FlyoutPickerTitleTextBlockStyle}"></TextBlock>
+                                                </FlipViewItem>
+                                            </FlipView.Items>
+                                        </FlipView>
+
+                                    </StackPanel>
+                                </RelativePanel>
+                            </Border>
+
+
+                            <MenuFlyoutSeparator RelativePanel.Above="secondborder" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"></MenuFlyoutSeparator>
+
+                            <Border Margin="30,0,30,10" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="oikpro" Name="secondborder">
+                        <RelativePanel>
+                                    <RelativePanel RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"  RelativePanel.AlignLeftWithPanel="True"  RelativePanel.LeftOf="calrp">
+
+                                        <TextBlock RelativePanel.AlignTopWithPanel="True" x:Name="tktitle" Margin="50,0,0,10" Text="Τελευταίες Κινήσεις" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+
+                                        <ListView ItemsSource="{Binding LastPayments}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="tktitle"  Name="lv">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <RelativePanel Padding="20,0" Margin="5" Background="{Binding Type,Converter={StaticResource ToColorConverter}}">
+                                                        <TextBlock Margin="0,2" x:Name="primtext" Foreground="White" RelativePanel.AlignVerticalCenterWithPanel="True">
+                                                            <Run FontSize="20" Text="{Binding Amount}"></Run>
+                                                            <Run Text="&#x20ac;"></Run>
+
+                                                            
+                                                        </TextBlock>
+                                                        <AppBarSeparator Foreground="White" RelativePanel.AlignVerticalCenterWithPanel="True" Name="sepa" RelativePanel.RightOf="primtext"></AppBarSeparator>
+                                                        <TextBlock Foreground="White" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.RightOf="sepa" FontWeight="Light" Text="{Binding Date}"></TextBlock>
+                                                    </RelativePanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                            </ListView>
+                                    </RelativePanel>
+
+                                    <RelativePanel Name="calrp" RelativePanel.AlignRightWithPanel="True">
+                                        <TextBlock x:Name="caltitle" Margin="30,0,0,10"  Text="Επόμενη Πληρωμή" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+
+                                        <CalendarDatePicker x:Name="cal"  IsCalendarOpen="False" IsEnabled="False" RelativePanel.Below="caltitle" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                                        </CalendarDatePicker>
+                                        
+
+                                    </RelativePanel>
+                                    </RelativePanel>
+                    </Border>
+
+                    </RelativePanel>
+                </ScrollViewer>
+                    <Ellipse Stroke="White" StrokeThickness="2" x:Name="userimage" MaxHeight="60" MaxWidth="60" MinWidth="60" MinHeight="60" Margin="15,-30,0,0">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="imbrush" AlignmentX="Center" AlignmentY="Center" ImageSource="Icons/User-03.png" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </RelativePanel>
+            </SplitView.Content>
+
+        </SplitView>
+
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState x:Name="Min">
+
+                        <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0">
+                            
+                        </AdaptiveTrigger>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="username.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="username2.Visibility" Value="Visible"></Setter>
+
+                        <Setter Target="logo.Source" Value="Icons/Logo mini-04.png"></Setter>
+                        <Setter Target="logo.MaxWidth" Value="25"></Setter>
+
+                        <Setter Target="oikpro.Margin" Value="30,80"></Setter>
+
+                        <Setter Target="sep.Visibility" Value="Visible"></Setter>
+
+                        <Setter Target="info.(RelativePanel.RightOf)" Value="sep"></Setter>
+                        <Setter Target="info.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="True"></Setter>
+
+                        <Setter Target="middlech.(RelativePanel.Below)" Value="Chart"></Setter>
+                        <Setter Target="middlech.(RelativePanel.AlignTopWithPanel)" Value="False"></Setter>
+                        <Setter Target="middlech.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+
+                        <Setter Target="legend.(RelativePanel.RightOf)" Value="middlech"></Setter>
+                        <Setter Target="legend.(RelativePanel.AlignTopWithPanel)" Value="False"></Setter>
+                        <Setter Target="legend.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="legend.(RelativePanel.AlignTopWith)" Value="middlech"></Setter>
+
+                        <Setter Target="sep.(RelativePanel.AlignVerticalCenterWith)" Value="Chart"></Setter>
+                        <Setter Target="sep.(RelativePanel.RightOf)" Value="Chart"></Setter>
+
+                    </VisualState.Setters>
+                    </VisualState>
+                <VisualState x:Name="Max">
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="748">
+
+                        </AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="username.Visibility" Value="Visible"></Setter>
+                        <Setter Target="username2.Visibility" Value="Collapsed"></Setter>
+
+                        <Setter Target="logo.Source" Value="Icons/Logo-01.png"></Setter>
+                        <Setter Target="logo.MaxWidth" Value="200"></Setter>
+                        <Setter Target="oikpro.Margin" Value="30,80"></Setter>
+                        <Setter Target="info.(RelativePanel.AlignRightWithPanel)" Value="True"></Setter>
+                        <Setter Target="info.(RelativePanel.AlignVerticalCenterWithPanel)" Value="True"></Setter>
+                        <Setter Target="info.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="True"></Setter>
+                        <Setter Target="info.(RelativePanel.RightOf)" Value="sep"></Setter>
+
+                        <Setter Target="middlech.(RelativePanel.RightOf)" Value="legend"></Setter>
+                        <Setter Target="middlech.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                        <Setter Target="middlech.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="legend.(RelativePanel.RightOf)" Value="Chart"></Setter>
+                        <Setter Target="legend.(RelativePanel.AlignTopWithPanel)" Value="True"></Setter>
+                        <Setter Target="legend.(RelativePanel.AlignBottomWithPanel)" Value="True"></Setter>
+                        <Setter Target="legend.Margin" Value="40,0"></Setter>
+                        <Setter Target="sep.(RelativePanel.AlignVerticalCenterWithPanel)" Value="True"></Setter>
+                        <Setter Target="sep.(RelativePanel.RightOf)" Value="middlech"></Setter>
+
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+
+    </RelativePanel>
+</Page>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
